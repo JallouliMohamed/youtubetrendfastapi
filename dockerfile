@@ -4,7 +4,7 @@ RUN pip freeze > requirements.txt
 
 RUN pip install pandas fastapi uvicorn pymongo browser-cookie3 requests pydantic
 
-EXPOSE 80
+EXPOSE 81
 
 COPY ./app /app
 

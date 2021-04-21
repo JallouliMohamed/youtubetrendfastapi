@@ -151,7 +151,7 @@ app = FastAPI()
 @app.get("/youtubeapi")
 def read_root(item: Item):
     df = pd.DataFrame(get_pages(item.country))
-    collection = MongoClient('172.18.0.2:27017')['youtubedata']['trend' + item.country]
+    collection = MongoClient('mongodb')['youtubedata']['trend' + item.country]
     records = df.to_dict(orient='records')
     collection.insert_many(records)
     return get_pages(item.country)
@@ -162,4 +162,4 @@ def read_item(item: Item):
     
     return item '''
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=81)
